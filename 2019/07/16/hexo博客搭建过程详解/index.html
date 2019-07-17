@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo博客搭建过程详解 | 阿福的梦想家园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="环境配置">
+  <meta name="description" content="环境配置使用hexo博客需要配置环境： 1. node.js     下载地址：http://nodejs.cn/download/ 根据系统安装不同版本,且node现在会集成安装npm。     这里如果需要修改node_cache、node_global，修改{nodejs}\node_modules\npm\npmrc文件内容为         prefix = {globalDirecto">
 <meta name="keywords" content="Java，linux， 云服务器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo博客搭建过程详解">
 <meta property="og:url" content="http://yoursite.com/2019/07/16/hexo博客搭建过程详解/index.html">
 <meta property="og:site_name" content="阿福的梦想家园">
-<meta property="og:description" content="环境配置">
+<meta property="og:description" content="环境配置使用hexo博客需要配置环境： 1. node.js     下载地址：http://nodejs.cn/download/ 根据系统安装不同版本,且node现在会集成安装npm。     这里如果需要修改node_cache、node_global，修改{nodejs}\node_modules\npm\npmrc文件内容为         prefix = {globalDirecto">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-17T14:34:22.040Z">
+<meta property="og:updated_time" content="2019-07-17T15:36:06.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo博客搭建过程详解">
-<meta name="twitter:description" content="环境配置">
+<meta name="twitter:description" content="环境配置使用hexo博客需要配置环境： 1. node.js     下载地址：http://nodejs.cn/download/ 根据系统安装不同版本,且node现在会集成安装npm。     这里如果需要修改node_cache、node_global，修改{nodejs}\node_modules\npm\npmrc文件内容为         prefix = {globalDirecto">
   
     <link rel="alternative" href="/atom.xml" title="阿福的梦想家园" type="application/atom+xml">
   
@@ -179,7 +179,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1>
+        <h1 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h1><pre><code>使用hexo博客需要配置环境：
+1. node.js
+    下载地址：http://nodejs.cn/download/ 根据系统安装不同版本,且node现在会集成安装npm。
+    这里如果需要修改node_cache、node_global，修改{nodejs}\node_modules\npm\npmrc文件内容为
+        prefix = {globalDirectory}
+        cache = {cacheDirectory}
+    即可
+2. git
+    下载地址：https://git-scm.com/download/win 或者其他国内资源</code></pre><h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><pre><code>执行命令：
+hexo:npm install -g hexo-cli 
+命令执行完毕后即可执行hexo -v查看hexo版本号，如果此时hexo还不是系统命令的话：
+    1.windows：
+        手动配置系统变量指向{globalDirectory}node_modules\hexo-cli\bin，linux则执行
+    2.linux：
+        执行ln -s {nodeDirectory}/lib/node_modules/hexo-cli/bin/hexo /usr/local/bin/hexo 即可</code></pre><h1 id="安装hexo-depolyer-git"><a href="#安装hexo-depolyer-git" class="headerlink" title="安装hexo-depolyer-git"></a>安装hexo-depolyer-git</h1><pre><code>执行命令：
+    npm install -g hexo-depolyer-git</code></pre><h1 id="创建博客目录"><a href="#创建博客目录" class="headerlink" title="创建博客目录"></a>创建博客目录</h1><pre><code>执行命令
+    hexo init {folder}
+如果不写文件夹默认在当前目录建立文件夹</code></pre><h1 id="编译文件"><a href="#编译文件" class="headerlink" title="编译文件"></a>编译文件</h1><pre><code>执行命令
+    hexo g
+执行该命令将编译生成静态文件，以便部署</code></pre><h1 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h1><pre><code>在github上建立名为：{userName}.github.io 的项目，注意此处的userName一定要与github用户名完全一致。
+在_config.xml中配置：
+    deploy:
+        type: git
+        repo: githubUrl
+        branch: master
+执行命令：
+    hexo d
+命令执行完毕后访问
+    https://{userName}.github.io
+即可</code></pre>
       
 
       
